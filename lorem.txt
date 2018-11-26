@@ -1,4 +1,3 @@
-------- 20 paragraphs, 146 words, 1051 bytes -------
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Donec vitae odio finibus, luctus erat malesuada, vehicula nulla.
 Nulla nec elit eget libero facilisis cursus.
