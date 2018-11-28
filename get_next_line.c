@@ -6,7 +6,7 @@
 /*   By: amalsago <amalsago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 09:12:15 by amalsago          #+#    #+#             */
-/*   Updated: 2018/11/28 11:15:37 by amalsago         ###   ########.fr       */
+/*   Updated: 2018/11/28 17:20:14 by amalsago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,25 @@ int				ft_strclen(const char *s, int c)
 	return (index);
 }
 
+int				get_line(char **save, char **line)
+{
+	int				nl;
+
+	nl = ft_strclen(*save, '\n');
+	*line = ft_strsub(*save, 0, nl);
+	if ((*save)[nl] != '\0')
+		*save = ft_strcpy(*save, (*save + nl) + 1);
+	else
+		ft_strdel(save);
+	return (1);
+}
+
 int				get_next_line(const int fd, char **line)
 {
 	int				bytes_read;
 	char			buff[BUFF_SIZE + 1];
-	static char		*save;
 	char			*tmp;
-	int				nl;
+	static char		*save;
 
 	if (fd < 0 || !line)
 		return (-1);
@@ -47,11 +59,5 @@ int				get_next_line(const int fd, char **line)
 	}
 	if (bytes_read <= 0 && !ft_strlen(save))
 		return (bytes_read);
-	nl = ft_strclen(save, '\n');
-	*line = ft_strsub(save, 0, nl);
-	if (save[nl] != '\0')
-		save = ft_strcpy(save, (save + nl) + 1);
-	else
-		ft_strdel(&save);
-	return (1);
+	return (get_line(&save, line));
 }
