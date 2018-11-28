@@ -6,7 +6,7 @@
 /*   By: amalsago <amalsago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 09:12:15 by amalsago          #+#    #+#             */
-/*   Updated: 2018/11/28 09:40:17 by amalsago         ###   ########.fr       */
+/*   Updated: 2018/11/28 11:15:37 by amalsago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,30 @@ int				get_next_line(const int fd, char **line)
 {
 	int				bytes_read;
 	char			buff[BUFF_SIZE + 1];
-	static char		*tmp;
+	static char		*save;
+	char			*tmp;
 	int				nl;
 
 	if (fd < 0 || !line)
 		return (-1);
-	if (!tmp)
-		tmp = (char *)ft_memalloc(sizeof(char));
+	if (!save)
+		save = (char *)ft_memalloc(sizeof(char));
 	while ((bytes_read = read(fd, buff, BUFF_SIZE)) > 0)
 	{
 		buff[bytes_read] = '\0';
-		tmp = ft_strjoin(tmp, buff);
-		if (ft_strchr(tmp, '\n') != NULL)
+		tmp = save;
+		save = ft_strjoin(save, buff);
+		free(tmp);
+		if (ft_strchr(save, '\n') != NULL)
 			break ;
 	}
-	if (bytes_read <= 0 && !ft_strlen(tmp))
+	if (bytes_read <= 0 && !ft_strlen(save))
 		return (bytes_read);
-	
-	nl = ft_strclen(tmp, '\n');
-	*line = ft_strsub(tmp, 0, nl);
-	if (tmp[nl] != '\0')
-		tmp = ft_strcpy(tmp, (tmp + nl) + 1);
+	nl = ft_strclen(save, '\n');
+	*line = ft_strsub(save, 0, nl);
+	if (save[nl] != '\0')
+		save = ft_strcpy(save, (save + nl) + 1);
 	else
-		ft_strdel(&tmp);
+		ft_strdel(&save);
 	return (1);
 }
