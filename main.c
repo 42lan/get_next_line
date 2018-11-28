@@ -6,7 +6,7 @@
 /*   By: amalsago <amalsago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 11:04:28 by amalsago          #+#    #+#             */
-/*   Updated: 2018/11/27 20:05:53 by amalsago         ###   ########.fr       */
+/*   Updated: 2018/11/28 09:23:33 by amalsago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		main(int argc, char **argv)
 	while (get_next_line(fd, &line) == 1)
 	{
 		ft_putendl(line);
-		sleep(1);
+		usleep(50000);
 		free(line);
 	}
 	close(fd);
