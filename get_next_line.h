@@ -6,7 +6,7 @@
 /*   By: amalsago <amalsago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 09:24:03 by amalsago          #+#    #+#             */
-/*   Updated: 2018/11/28 09:34:05 by amalsago         ###   ########.fr       */
+/*   Updated: 2018/11/29 10:46:52 by amalsago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
-# define BUFF_SIZE 1000
+# define BUFF_SIZE 32
 
 int		get_next_line(const int fd, char **line);
 
