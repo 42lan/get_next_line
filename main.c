@@ -6,7 +6,7 @@
 /*   By: amalsago <amalsago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 11:04:28 by amalsago          #+#    #+#             */
-/*   Updated: 2018/11/29 10:46:11 by amalsago         ###   ########.fr       */
+/*   Updated: 2018/11/29 11:07:28 by amalsago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,12 @@ int		main(int argc, char **argv)
 	while (get_next_line(fd1, &line) == 1)
 	{
 		ft_putstr("fd1: \t"); ft_putendl(line);		// print 1st line of 1st fd (fd1)
-		get_next_line(fd2, &line);
-		ft_putstr("fd2: \t"); ft_putendl(line);		// print 1st line of 2nd fd (fd2)
+		if (fd2 > 0)
+			if (get_next_line(fd2, &line) > 0)
+			{
+				ft_putstr("fd2: \t");
+				ft_putendl(line);		// print 1st line of 2nd fd (fd2)
+			}
 		usleep(50000);
 		free(line);
 	}
