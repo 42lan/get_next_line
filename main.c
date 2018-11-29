@@ -6,7 +6,7 @@
 /*   By: amalsago <amalsago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 11:04:28 by amalsago          #+#    #+#             */
-/*   Updated: 2018/11/28 09:23:33 by amalsago         ###   ########.fr       */
+/*   Updated: 2018/11/29 10:46:11 by amalsago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,21 @@
 
 int		main(int argc, char **argv)
 {
-	int		fd;
+	(void)argc;
 	char	*line;
-
-	if (argc < 2)
+	int		fd1 = open(argv[1], O_RDONLY);
+	int		fd2 = open(argv[2], O_RDONLY);
+	while (get_next_line(fd1, &line) == 1)
 	{
-		ft_putstr("usage: ./a.out <filename>\n");
-		return (1);
-	}
-
-	fd = open(argv[1], O_RDONLY);
-	while (get_next_line(fd, &line) == 1)
-	{
-		ft_putendl(line);
+		ft_putstr("fd1: \t"); ft_putendl(line);		// print 1st line of 1st fd (fd1)
+		get_next_line(fd2, &line);
+		ft_putstr("fd2: \t"); ft_putendl(line);		// print 1st line of 2nd fd (fd2)
 		usleep(50000);
 		free(line);
 	}
-	close(fd);
+	ft_putnbr(OPEN_MAX);
+	ft_putendl(" = OPEN_MAX");
+	close(fd1);
+	close(fd2);
 	return (0);
 }
