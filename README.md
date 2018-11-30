@@ -1,2 +1,2 @@
 # get_next_line
-Ce projet a pour but de me faire coder une fonction qui renvoit une ligne terminée par un retour à la ligne lue depuis un descripteur de fichier.
+The aim of this project is to make me code a function that returns a line ending with a newline, read from a file descriptor
