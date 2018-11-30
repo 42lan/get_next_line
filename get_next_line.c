@@ -29,7 +29,8 @@ int				get_line(char **save, char **line)
 	int				nl;
 
 	nl = ft_strclen(*save, '\n');
-	*line = ft_strsub(*save, 0, nl);
+	if (!(*line = ft_strsub(*save, 0, nl)))
+		return (-1);
 	if ((*save)[nl] != '\0')
 		*save = ft_strcpy(*save, (*save + nl) + 1);
 	else
