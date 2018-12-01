@@ -6,15 +6,13 @@
 /*   By: amalsago <amalsago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 09:12:15 by amalsago          #+#    #+#             */
-/*   Updated: 2018/11/30 14:26:25 by amalsago         ###   ########.fr       */
+/*   Updated: 2018/12/01 20:22:20 by amalsago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "get_next_line.h"
-#include <string.h>
 
-int				ft_strclen(const char *s, int c)
+static int			ft_strclen(const char *s, int c)
 {
 	int		index;
 
@@ -24,7 +22,7 @@ int				ft_strclen(const char *s, int c)
 	return (index);
 }
 
-int				get_line(char **save, char **line)
+static int			get_line(char **save, char **line)
 {
 	int				nl;
 
@@ -38,14 +36,14 @@ int				get_line(char **save, char **line)
 	return (1);
 }
 
-int				get_next_line(const int fd, char **line)
+int					get_next_line(const int fd, char **line)
 {
 	int				bytes_read;
 	char			buff[BUFF_SIZE + 1];
 	char			*tmp;
 	static char		*save[OPEN_MAX];
 
-	if (fd < 0 || !line)
+	if (fd < 0 || fd > OPEN_MAX || !line)
 		return (-1);
 	if (!save[fd])
 		save[fd] = ft_strnew(0);
