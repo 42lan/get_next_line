@@ -6,7 +6,7 @@
 /*   By: amalsago <amalsago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 09:24:03 by amalsago          #+#    #+#             */
-/*   Updated: 2018/11/29 10:46:52 by amalsago         ###   ########.fr       */
+/*   Updated: 2018/12/01 20:10:12 by amalsago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 # define GET_NEXT_LINE_H
 
 # include <unistd.h>
-# include <stdlib.h>
+# include <limits.h>
+# include <string.h>
+# include "libft/includes/libft.h"
 
 # define BUFF_SIZE 32
-# define OPEN_MAX 1024
 
 int		get_next_line(const int fd, char **line);
 
