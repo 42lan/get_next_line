@@ -15,9 +15,9 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <limits.h>
 
 # define BUFF_SIZE 32
+# define OPEN_MAX 1024
 
 int		get_next_line(const int fd, char **line);
 
