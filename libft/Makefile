@@ -6,7 +6,7 @@
 #    By: amalsago <amalsago@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/15 11:06:32 by amalsago          #+#    #+#              #
-#    Updated: 2018/11/23 09:11:40 by amalsago         ###   ########.fr        #
+#    Updated: 2018/12/03 16:06:23 by amalsago         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,9 +86,6 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar -rc $(NAME) $(OBJ) 
 	ranlib $(NAME)
-
-$(OBJ):
-	$(CC) $(CFLAGS) -c $(SRC)
 
 clean:
 	/bin/rm -f $(OBJ)
