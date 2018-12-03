@@ -17,7 +17,7 @@ static int			ft_strclen(const char *s, int c)
 	int		index;
 
 	index = 0;
-	while (s && s[index] && s[index] != '\0' && s[index] != c)
+	while (s[index] != '\0' && s[index] != c)
 		index++;
 	return (index);
 }
